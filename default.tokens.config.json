@@ -21,7 +21,7 @@
 
   "_text_styles_consumption": "Optional; only meaningful when text_styles_format is \"both\". How downstream component tooling consumes the styles: \"classes\" (default - compose the utility class in Twig) or \"mixins\" (@include in each component's .scss). Forced by the format otherwise (css-classes → classes, scss-mixins → mixins). Asked once at export time; never mixed within a project.",
 
-  "_foundations": "Optional, recorded by the export skill's step 4b (references/foundations.md), never set by hand up front. Per-piece status of the theme layout-foundations scaffold, shaped {\"breakpoints\": \"scaffolded\"|\"declined\"|\"preexisting\", \"grid\": ..., \"spacing\": ..., \"breakpoints_yml\": ...}. \"preexisting\" = found in the theme's code and left alone; \"scaffolded\" = created by the skill, owned by the project afterwards; \"declined\" = the user said no. Any recorded status silences the question, so re-exports only re-ask for pieces still missing in code AND unrecorded here.",
+  "_foundations": "Optional, recorded by the export skill's step 4b (references/foundations.md), never set by hand up front. Per-piece status of the theme layout-foundations scaffold, shaped {\"breakpoints\": \"scaffolded\"|\"declined\"|\"preexisting\", \"grid\": ..., \"spacing\": ...}. \"preexisting\" = found in the theme's code and left alone; \"scaffolded\" = created by the skill, owned by the project afterwards; \"declined\" = the user said no. Any recorded status silences the question, so re-exports only re-ask for pieces still missing in code AND unrecorded here.",
 
   "_icons_dir": "Optional, used by downstream component tooling. Theme-relative directory where icon SVGs land (e.g. \"assets/icons\" or \"images/icons\"; never under templates/).",
 

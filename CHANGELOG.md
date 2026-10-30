@@ -2,6 +2,13 @@
 
 All notable changes to `figma2css`. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2026-10-29
+
+### Fixed
+
+- SKILL.md frontmatter is now strict-YAML valid (the description moved to a folded block scalar; the unquoted colons broke GitHub's frontmatter renderer, though lenient parsers accepted it).
+- Drupal-specific scope removed or demoted to examples: the `<theme>.breakpoints.yml` scaffold is gone from the foundations step (platform config is the theme's concern, not this skill's), and `libraries.yml` / Drupal-shaped paths are now illustrative rather than mandated. Verified: harness 13/13, frontmatter parses under a strict YAML parser.
+
 ## [1.0.0] - 2026-10-29
 
 First public release. Paired with the [Raw Token Exporter Figma plugin](https://www.figma.com/community/plugin/1697764012142993786/raw-token-exporter) on Figma Community.

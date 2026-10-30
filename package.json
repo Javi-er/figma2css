@@ -1,6 +1,6 @@
 {
   "name": "figma2css",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "license": "MIT",
   "description": "Claude Code skill + zero-dependency CLI: Figma Variables and TextStyles (exported by the Raw Token Exporter Figma plugin) to CSS custom properties, utility classes, and responsive typography. The version field tracks CHANGELOG.md.",

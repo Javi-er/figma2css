@@ -1,6 +1,15 @@
 ---
 name: figma2css
-description: Update a project's design tokens CSS file from the JSON dump produced by the Raw Token Exporter Figma plugin. Trigger when the user asks to "update tokens from Figma", "regenerate design tokens", "import the Figma JSON", "sync tokens", or any variant where they want the project's CSS custom properties refreshed from a Figma Variables export. Also triggers on the standalone asks the procedure covers: responsive typography ("make the typography responsive") and layout foundations ("set up the breakpoints and grid from the Figma Spacing page", step 4b). Reads the JSON (clipboard or path), applies the project's tokens.config.json, and writes a `:root { … }` block of CSS custom properties into a managed region of the target CSS file. Aliases preserved, units type-aware, multi-mode collections expanded with name suffix.
+description: >-
+  Update a project's design tokens CSS file from the JSON dump produced by the Raw Token Exporter
+  Figma plugin. Trigger when the user asks to "update tokens from Figma", "regenerate design tokens",
+  "import the Figma JSON", "sync tokens", or any variant where they want the project's CSS custom
+  properties refreshed from a Figma Variables export. Also triggers on the standalone asks the
+  procedure covers: responsive typography ("make the typography responsive") and layout foundations
+  ("set up the breakpoints and grid from the Figma Spacing page", step 4b). Reads the JSON (clipboard
+  or path), applies the project's tokens.config.json, and writes a `:root { … }` block of CSS custom
+  properties into a managed region of the target CSS file. Aliases preserved, units type-aware,
+  multi-mode collections expanded with name suffix.
 allowed-tools: Bash, Read, Edit, Write, AskUserQuestion
 ---
 
@@ -33,10 +42,10 @@ Look for `tokens.config.json` in this order:
 3. Ask the user. If they don't have one, offer to scaffold a minimal one. **Before suggesting an `output` path, search the theme for an existing managed-region file** (a CSS file that contains `/* TOKENS:START */` somewhere in its body):
 
    ```bash
-   grep -rln "TOKENS:START" web/themes/custom/ themes/ css/ 2>/dev/null | head -5
+   grep -rln "TOKENS:START" themes/ css/ src/ web/ 2>/dev/null | head -5
    ```
 
-   If exactly one match is found, use its path as the `output` value - don't ask, don't default. This is the placeholder-theme convention: the theme ships with `css/base/tokens.css` pre-populated with markers + a docblock, and the export must land there to preserve the docblock and the libraries.yml wiring. If multiple matches are found, match them against `tokens.config.json`'s `output` and `text_styles_output` keys first (two marker files are the EXPECTED shape when the typography split is active); ask which is canonical only when a marker file matches neither key. If none are found, fall back to `css/base/tokens.css` as the default - but warn the user that the theme didn't ship a stub file and offer to scaffold one with the markers in place.
+   If exactly one match is found, use its path as the `output` value - don't ask, don't default. Some themes ship a stub tokens file pre-populated with the markers and a docblock; the export must land there to preserve the docblock and the theme's asset wiring. If multiple matches are found, match them against `tokens.config.json`'s `output` and `text_styles_output` keys first (two marker files are the EXPECTED shape when the typography split is active); ask which is canonical only when a marker file matches neither key. If none are found, fall back to `css/base/tokens.css` as the default - but warn the user that the theme didn't ship a stub file and offer to scaffold one with the markers in place.
 
    The minimal config is just `{"output": "<path-discovered-above>"}`. See this repo's README for the full schema.
 
@@ -105,7 +114,7 @@ On a **plain-CSS or PostCSS theme**: no format question (classes only); just con
 Adapt the path to the theme's actual source layout (discovered structure wins over these conventional defaults). **Record both keys in `tokens.config.json`.**
 
 **Wiring (don't skip):**
-- A CSS (or compiled-from-Sass) typography file must be **attached** - add it to `<theme>.libraries.yml` (next to tokens.css) if not already there. The classes are useless unloaded.
+- A CSS (or compiled-from-Sass) typography file must be **attached** - wire it into the theme's asset pipeline (for a Drupal theme, `<theme>.libraries.yml` next to tokens.css) if not already there. The classes are useless unloaded.
 - A mixins-only partial needs no attachment, but components must be able to `@use` it - note its path in the report so the scaffolder/devs reference it.
 - **Migration note:** if classes previously lived inside the tokens file's managed region, the next `--emit tokens` splice removes them there (the move will not appear in the tokens-side `--diff` (it reports custom properties only) - call the move out in the report; `git diff` of the two spliced files shows it) and they reappear in the typography file - expected, call it out in the report.
 
@@ -199,11 +208,11 @@ When the project HAS a linter, run it on the files you just spliced:
 
 ### 4b. Foundations from the Spacing page (once per project)
 
-When the dump carries spacing/grid variables or a two-mode viewport collection AND the theme lacks any of: a breakpoints map / media-query helper, spacing helpers, grid helpers, `<theme>.breakpoints.yml`. Code is authoritative; only missing pieces are offered. Start by asking:
+When the dump carries spacing/grid variables or a two-mode viewport collection AND the theme lacks any of: a breakpoints map / media-query helper, spacing helpers, grid helpers. Code is authoritative; only missing pieces are offered. Start by asking:
 
 > *"Does your Figma file have a Spacing (foundations) section? If so, please share the frame containing the whole page for refining: select it in Figma Dev Mode or paste its link."*
 
-Then follow `references/foundations.md` (code-first detection, the scaffold question naming only the missing pieces, Figma analysis rules, ask-first defaults, per-format artifacts, breakpoints.yml, README section, verification). Record per-piece status (`"scaffolded"` / `"declined"` / `"preexisting"`) under **`foundations`** in `tokens.config.json`; re-exports only re-ask for pieces still missing in code and unrecorded there.
+Then follow `references/foundations.md` (code-first detection, the scaffold question naming only the missing pieces, Figma analysis rules, ask-first defaults, per-format artifacts, README section, verification). Record per-piece status (`"scaffolded"` / `"declined"` / `"preexisting"`) under **`foundations`** in `tokens.config.json`; re-exports only re-ask for pieces still missing in code and unrecorded there.
 
 ### 5. Report
 
@@ -242,5 +251,5 @@ The third shape below is the forward-looking canonical case. New projects will m
 
 - `bin/transform.js` - the actual transformer (Node, no deps).
 - `tests/run-tests.sh` - regression harness (fixtures + golden files; contributor tool, never runs at skill runtime). Run it after any transformer change; `UPDATE_GOLDEN=1` regenerates goldens for intentional emission changes.
-- `references/foundations.md` - canonical procedure for step 4b (layout foundations scaffold: breakpoints, spacing/grid helpers, breakpoints.yml).
+- `references/foundations.md` - canonical procedure for step 4b (layout foundations scaffold: breakpoints map, spacing/grid helpers).
 - See the README for a complete config schema and starting examples.

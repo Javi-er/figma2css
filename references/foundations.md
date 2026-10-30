@@ -1,6 +1,6 @@
 # Foundations from the Spacing page (once per project)
 
-Canonical procedure for SKILL.md step 4b. Scaffolds the theme-side layout foundations the design system implies but token export alone cannot provide: a breakpoints map + media-query helper, spacing helpers, grid helpers, and the Drupal `<theme>.breakpoints.yml`. Runs once per project; re-runs only re-ask for pieces still missing in code (see Persistence).
+Canonical procedure for SKILL.md step 4b. Scaffolds the theme-side layout foundations the design system implies but token export alone cannot provide: a breakpoints map + media-query helper, spacing helpers, and grid helpers. Runs once per project; re-runs only re-ask for pieces still missing in code (see Persistence).
 
 ## Trigger + code-first detection
 
@@ -9,7 +9,6 @@ Run after step 4a when the dump carries spacing/grid variables or a two-mode vie
 - **breakpoints**: a Sass `$breakpoints` map or `media-query` mixin, `@custom-media` rules, or a documented breakpoints header in the CSS source.
 - **spacing**: mixins/utilities reading the exported `--*spacing*` custom properties.
 - **grid**: a `fluid()`/`clamp()` gutter helper, a `css-grid`/`page-grid` mixin or class.
-- **breakpoints_yml**: `<theme>.breakpoints.yml` next to `<theme>.libraries.yml`.
 
 A piece already recorded in `tokens.config.json` `foundations` is silent regardless of status. Only pieces missing in code AND unrecorded trigger the question.
 
@@ -21,7 +20,7 @@ First, the frame request (the variables dump alone lacks the page's intent prose
 
 If the user has no such page or skips: proceed from the dump variables alone (anchors, spacing pairs, grid values still work; the stepped-vs-fluid prose and diagrams are simply unavailable, note that in the report). Then the scaffold question, via `AskUserQuestion`, **naming only the missing pieces** (the quoted text below is the all-missing case; drop every piece marked `preexisting` from the sentence and the offer):
 
-> *"This theme is missing layout foundations the design system's Spacing page implies: no breakpoints map or media-query helper, no spacing helpers, no grid helpers, no `<theme>.breakpoints.yml`. Scaffold them from the Figma Spacing data?*
+> *"This theme is missing layout foundations the design system's Spacing page implies: no breakpoints map or media-query helper, no spacing helpers, no grid helpers. Scaffold them from the Figma Spacing data?*
 > - *(a) **Yes, scaffold the missing pieces** (default)*
 > - *(b) **Let me pick per piece** (one yes/no per missing piece, in the same `AskUserQuestion` call; each answer records individually)*
 > - *(c) **No, the project handles layout itself** (recorded as declined; won't ask again)"*
@@ -55,19 +54,15 @@ Authoring format and build command were detected at step 2b; content rules per `
 
 **Plain CSS**: a `layout.css` whose header documents the breakpoint values and the em rule (custom properties cannot be read inside `@media`), a `.page-grid` class with stepped `grid-template-columns` and fluid gap/`padding-inline` via `clamp()`; spacing stays direct consumption of the exported custom properties.
 
-## breakpoints.yml
-
-Scaffold `<theme>.breakpoints.yml` with one entry per breakpoint: `label`, `mediaQuery` in em on the 16px basis (mobile's mediaQuery is the empty string), ascending `weight`, `multipliers` `[1x, 2x]`. Header comment: values MUST stay hand-synced with the code-side map; a build step should eventually derive one side from the other, and until then every change touches both files. An existing file is `preexisting`: never overwrite it.
-
 ## README section
 
-Add (or update) a "Design system foundations" section in the theme README: the breakpoint table marking which values are DS anchors and which are project decisions pending designer confirmation, how components consume the helpers (the media-query helper instead of raw values, spacing helpers instead of literal px, the page grid for the outer rail), and the breakpoints.yml hand-sync warning.
+Add (or update) a "Design system foundations" section in the theme README: the breakpoint table marking which values are DS anchors and which are project decisions pending designer confirmation, and how components consume the helpers (the media-query helper instead of raw values, spacing helpers instead of literal px, the page grid for the outer rail). If the platform declares breakpoints in its own config file (Drupal themes do), note that keeping it in sync with the code-side map is the theme's responsibility, outside this skill's scope.
 
 ## Verification
 
 - Sass/PostCSS themes: run the build command detected at step 2b; the scaffold must compile clean before reporting.
 - Lint the scaffolded files exactly as step 4a describes (project linter detection, then autofix); same hard rule, never a linter-disable directive.
-- Cross-check sync: every `mediaQuery` em value in `breakpoints.yml` equals the corresponding code-side value, and no `@media` line anywhere in the scaffold uses `rem`.
+- Cross-check: no `@media` line anywhere in the scaffold uses `rem`.
 
 ## Persistence
 
@@ -77,8 +72,7 @@ Record per-piece status under `foundations` in `tokens.config.json` (doc string 
 "foundations": {
   "breakpoints": "scaffolded",
   "grid": "scaffolded",
-  "spacing": "declined",
-  "breakpoints_yml": "preexisting"
+  "spacing": "declined"
 }
 ```
 
