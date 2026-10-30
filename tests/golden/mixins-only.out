@@ -1,0 +1,40 @@
+/* Text styles */
+@mixin headings-heading-2xl {
+  font-family: var(--ds-font-family-heading), sans-serif;
+  font-weight: var(--ds-font-weight-heavy);
+  font-size: var(--ds-font-size-heading-2xl);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+@mixin headings-heading-lg {
+  font-family: var(--ds-font-family-heading), sans-serif;
+  font-weight: var(--ds-font-weight-heavy);
+  font-size: var(--ds-font-size-heading-lg);
+  line-height: 1.1;
+}
+
+@mixin body-body-sm {
+  font-family: var(--ds-font-family-text), sans-serif;
+  font-weight: var(--ds-font-weight-regular);
+  font-size: var(--ds-font-size-text-sm);
+  line-height: 1.6;
+}
+
+@mixin info-callout-md {
+  font-family: "Source Serif 4", serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 2.8rem;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+@mixin code-inline {
+  font-family: var(--ds-font-family-mono), monospace;
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 18px;
+  letter-spacing: 1px;
+  text-decoration: underline;
+}

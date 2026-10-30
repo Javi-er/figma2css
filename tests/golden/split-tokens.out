@@ -1,0 +1,45 @@
+:root {
+  /* Base Variables */
+  --ds-brand-base-white: #fff;
+  --ds-brand-base-transparent: #0000;
+  --ds-brand-base-overlay-10: rgb(255 255 255 / 10%);
+  --ds-brand-accent: #e84e1b;
+  --ds-size-200-16px: 1.6rem; /* 16px */
+  --ds-size-300-24px: 2.4rem; /* 24px */
+  --ds-size-neg-025-2px: -0.2rem; /* -2px */
+  --radius-md: 8px;
+  --ds-font-weight-regular: 450;
+  --ds-font-weight-heavy: 750;
+  --ds-font-family-heading: "Space Grotesk";
+  --ds-font-family-text: "Public Sans";
+  --ds-font-family-mono: "JetBrains Mono";
+  --ds-font-family-serif: "Source Serif 4";
+
+  /* 02. Typography: Max (1440px) */
+  --ds-font-size-800: 6.4rem; /* 64px */
+  --ds-font-size-500: 4rem; /* 40px */
+  --ds-font-size-400: 3.2rem; /* 32px */
+  --ds-font-size-300: 2.4rem; /* 24px */
+  --ds-font-size-175: 1.4rem; /* 14px */
+  --ds-font-size-heading-2xl: var(--ds-font-size-800);
+  --ds-font-size-heading-lg: var(--ds-font-size-500);
+  --ds-font-size-text-sm: var(--ds-font-size-175);
+
+  /* 02. Typography: Min (375px) */
+  --ds-font-size-800-min: 6.4rem; /* 64px */
+  --ds-font-size-500-min: 4rem; /* 40px */
+  --ds-font-size-400-min: 3.2rem; /* 32px */
+  --ds-font-size-300-min: 2.4rem; /* 24px */
+  --ds-font-size-175-min: 1.4rem; /* 14px */
+  --ds-font-size-heading-2xl-min: var(--ds-font-size-400);
+  --ds-font-size-heading-lg-min: var(--ds-font-size-300);
+  --ds-font-size-text-sm-min: var(--ds-font-size-175);
+
+  /* 03. Spacing: Desktop (Max) */
+  --ds-spacing-none: 0rem; /* 0px */
+  --ds-spacing-section-default: var(--ds-size-300-24px);
+
+  /* 03. Spacing: Mobile (Min) */
+  --ds-spacing-none-mobile: 0rem; /* 0px */
+  --ds-spacing-section-default-mobile: var(--ds-size-200-16px);
+}

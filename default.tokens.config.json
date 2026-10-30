@@ -1,0 +1,29 @@
+{
+  "_README": "figma2css - design tokens config. Copy this file to `tokens.config.json` in your theme repo (alongside your CSS source dir) and adjust the values below. Every field except `output` is optional; the values shown here are the built-in defaults, so leaving them as-is changes nothing. See this repo's README for the full schema including `managed_region` and `scope_units` overrides.",
+
+  "output": "css/base/tokens.css",
+
+  "_source_json": "Optional, default ~/Downloads. Where the Raw Token Exporter plugin's Download JSON button saves the export (<figma-file-slug>-tokens.json). A directory (the skill reads the newest *-tokens.json in it) or a specific file path; ~ and $HOME expand. At step 2 the skill asks 'downloaded file or clipboard'; when you pick the file, it reads from this location.",
+
+  "indent": "  ",
+  "unit_base": 16,
+  "default_unit": "rem",
+  "px_hints": true,
+  "text_style_prefix": "",
+
+  "_skip_collections": "Optional. Array of collection names (exact match) to exclude from the emission - e.g. [\"Utility (do not export)\"]. The export skill auto-detects '(do not export)'-style markers in collection names and asks before adding them here; once recorded, re-exports skip silently. The transformer warns when an exported variable aliases into a skipped collection (the emitted var() would never resolve).",
+  "skip_collections": [],
+
+  "_text_styles_output": "Optional. When set, TextStyle typography moves OUT of the tokens file into this path (e.g. \"css/base/typography.css\", or \"scss/base/typography.scss\" on a Sass theme; \"scss/base/_typography.scss\" partial when text_styles_format is scss-mixins). The skill then runs the transformer twice - `--emit tokens` and `--emit text-styles` - and splices each into its target's managed region. Unset = legacy combined emission into the tokens file.",
+
+  "_text_styles_format": "Optional, default \"css-classes\". How TextStyles are emitted: \"css-classes\" (.name { … }), \"scss-mixins\" (@mixin name { … } - Sass themes; components @include them), or \"both\" (mixin + a class that @includes it). On Sass themes the export skill asks which you want the first time and records the answer here.",
+  "text_styles_format": "css-classes",
+
+  "_text_styles_consumption": "Optional; only meaningful when text_styles_format is \"both\". How downstream component tooling consumes the styles: \"classes\" (default - compose the utility class in Twig) or \"mixins\" (@include in each component's .scss). Forced by the format otherwise (css-classes → classes, scss-mixins → mixins). Asked once at export time; never mixed within a project.",
+
+  "_foundations": "Optional, recorded by the export skill's step 4b (references/foundations.md), never set by hand up front. Per-piece status of the theme layout-foundations scaffold, shaped {\"breakpoints\": \"scaffolded\"|\"declined\"|\"preexisting\", \"grid\": ..., \"spacing\": ..., \"breakpoints_yml\": ...}. \"preexisting\" = found in the theme's code and left alone; \"scaffolded\" = created by the skill, owned by the project afterwards; \"declined\" = the user said no. Any recorded status silences the question, so re-exports only re-ask for pieces still missing in code AND unrecorded here.",
+
+  "_icons_dir": "Optional, used by downstream component tooling. Theme-relative directory where icon SVGs land (e.g. \"assets/icons\" or \"images/icons\"; never under templates/).",
+
+  "_text_styles_responsive": "Optional. When a text style binds a property (font-size etc.) to a variable in a TWO-MODE collection whose mode names carry viewport anchors (e.g. \"Max (1440px)\" / \"Min (375px)\") and the values differ between modes, emit it responsively. {\"strategy\": \"stepped\", \"switch\": \"48em\"} = mobile-first small-viewport var() plus an @media (width >= switch) override of the same property (em or px only; rem is rejected because @media resolves rem against the browser 16px default, not the theme root). {\"strategy\": \"fluid\"} = a self-contained clamp() interpolating between the two anchors (requires the (Npx) anchors in both mode names). Unset = current behavior: only the default mode's var() is referenced. Properties whose bound variable is identical across modes always emit a single declaration. Works in plain CSS, Sass, and PostCSS output (plain-CSS class output collects stepped overrides into one trailing @media block)."
+}

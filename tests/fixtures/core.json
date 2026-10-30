@@ -1,0 +1,46 @@
+{
+  "collections": [
+    {"id": "CBASE", "name": "Base Variables", "defaultModeId": "b1",
+     "modes": [{"modeId": "b1", "name": "Default"}],
+     "variableIds": ["white", "transparent", "overlay10", "accent", "size200", "size300", "neg2", "radmd", "wreg", "wheavy", "famheading", "famtext", "fammono", "famserif"]},
+    {"id": "CSPACE", "name": "03. Spacing", "defaultModeId": "sd",
+     "modes": [{"modeId": "sd", "name": "Desktop (Max)"}, {"modeId": "sm", "name": "Mobile (Min)"}],
+     "variableIds": ["spacenone", "spacesec"]},
+    {"id": "CTYPE", "name": "02. Typography", "defaultModeId": "tmax",
+     "modes": [{"modeId": "tmax", "name": "Max (1440px)"}, {"modeId": "tmin", "name": "Min (375px)"}],
+     "variableIds": ["fs800", "fs500", "fs400", "fs300", "fs175", "sem2xl", "semlg", "semsm"]}
+  ],
+  "variables": [
+    {"id": "white", "name": "ds-brand/base/white", "resolvedType": "COLOR", "variableCollectionId": "CBASE", "scopes": ["ALL_SCOPES"], "valuesByMode": {"b1": {"r": 1, "g": 1, "b": 1, "a": 1}}},
+    {"id": "transparent", "name": "ds-brand/base/transparent", "resolvedType": "COLOR", "variableCollectionId": "CBASE", "scopes": ["ALL_SCOPES"], "valuesByMode": {"b1": {"r": 0, "g": 0, "b": 0, "a": 0}}},
+    {"id": "overlay10", "name": "ds-brand/base/overlay-10", "resolvedType": "COLOR", "variableCollectionId": "CBASE", "scopes": ["ALL_SCOPES"], "valuesByMode": {"b1": {"r": 1, "g": 1, "b": 1, "a": 0.10000000149011612}}},
+    {"id": "accent", "name": "ds-brand/accent", "resolvedType": "COLOR", "variableCollectionId": "CBASE", "scopes": ["ALL_SCOPES"], "valuesByMode": {"b1": {"r": 0.9098039269447327, "g": 0.30588236451148987, "b": 0.10588235408067703, "a": 1}}},
+    {"id": "size200", "name": "ds-size/200 (16px)", "resolvedType": "FLOAT", "variableCollectionId": "CBASE", "scopes": ["WIDTH_HEIGHT", "GAP"], "valuesByMode": {"b1": 16}},
+    {"id": "size300", "name": "ds-size/300 (24px)", "resolvedType": "FLOAT", "variableCollectionId": "CBASE", "scopes": ["WIDTH_HEIGHT", "GAP"], "valuesByMode": {"b1": 24}},
+    {"id": "neg2", "name": "ds-size/neg-025 (-2px)", "resolvedType": "FLOAT", "variableCollectionId": "CBASE", "scopes": ["WIDTH_HEIGHT", "GAP", "FONT_VARIATIONS"], "valuesByMode": {"b1": -2}},
+    {"id": "radmd", "name": "radius-md", "resolvedType": "FLOAT", "variableCollectionId": "CBASE", "scopes": ["CORNER_RADIUS"], "valuesByMode": {"b1": 8}},
+    {"id": "wreg", "name": "ds-font-weight/regular", "resolvedType": "FLOAT", "variableCollectionId": "CBASE", "scopes": ["FONT_WEIGHT"], "valuesByMode": {"b1": 450}},
+    {"id": "wheavy", "name": "ds-font-weight/heavy", "resolvedType": "FLOAT", "variableCollectionId": "CBASE", "scopes": ["FONT_WEIGHT"], "valuesByMode": {"b1": 750}},
+    {"id": "famheading", "name": "ds-font-family/heading", "resolvedType": "STRING", "variableCollectionId": "CBASE", "scopes": ["ALL_SCOPES"], "valuesByMode": {"b1": "Space Grotesk"}},
+    {"id": "famtext", "name": "ds-font-family/text", "resolvedType": "STRING", "variableCollectionId": "CBASE", "scopes": ["ALL_SCOPES"], "valuesByMode": {"b1": "Public Sans"}},
+    {"id": "fammono", "name": "ds-font-family/mono", "resolvedType": "STRING", "variableCollectionId": "CBASE", "scopes": ["ALL_SCOPES"], "valuesByMode": {"b1": "JetBrains Mono"}},
+    {"id": "famserif", "name": "ds-font-family/serif", "resolvedType": "STRING", "variableCollectionId": "CBASE", "scopes": ["ALL_SCOPES"], "valuesByMode": {"b1": "Source Serif 4"}},
+    {"id": "spacenone", "name": "ds-spacing/none", "resolvedType": "FLOAT", "variableCollectionId": "CSPACE", "scopes": ["WIDTH_HEIGHT"], "valuesByMode": {"sd": 0, "sm": 0}},
+    {"id": "spacesec", "name": "ds-spacing/section-default", "resolvedType": "FLOAT", "variableCollectionId": "CSPACE", "scopes": ["WIDTH_HEIGHT"], "valuesByMode": {"sd": {"type": "VARIABLE_ALIAS", "id": "size300"}, "sm": {"type": "VARIABLE_ALIAS", "id": "size200"}}},
+    {"id": "fs800", "name": "ds-font-size/800", "resolvedType": "FLOAT", "variableCollectionId": "CTYPE", "scopes": ["FONT_SIZE"], "valuesByMode": {"tmax": 64, "tmin": 64}},
+    {"id": "fs500", "name": "ds-font-size/500", "resolvedType": "FLOAT", "variableCollectionId": "CTYPE", "scopes": ["FONT_SIZE"], "valuesByMode": {"tmax": 40, "tmin": 40}},
+    {"id": "fs400", "name": "ds-font-size/400", "resolvedType": "FLOAT", "variableCollectionId": "CTYPE", "scopes": ["FONT_SIZE"], "valuesByMode": {"tmax": 32, "tmin": 32}},
+    {"id": "fs300", "name": "ds-font-size/300", "resolvedType": "FLOAT", "variableCollectionId": "CTYPE", "scopes": ["FONT_SIZE"], "valuesByMode": {"tmax": 24, "tmin": 24}},
+    {"id": "fs175", "name": "ds-font-size/175", "resolvedType": "FLOAT", "variableCollectionId": "CTYPE", "scopes": ["FONT_SIZE"], "valuesByMode": {"tmax": 14, "tmin": 14}},
+    {"id": "sem2xl", "name": "ds-font-size/heading/2xl", "resolvedType": "FLOAT", "variableCollectionId": "CTYPE", "scopes": ["FONT_SIZE"], "valuesByMode": {"tmax": {"type": "VARIABLE_ALIAS", "id": "fs800"}, "tmin": {"type": "VARIABLE_ALIAS", "id": "fs400"}}},
+    {"id": "semlg", "name": "ds-font-size/heading/lg", "resolvedType": "FLOAT", "variableCollectionId": "CTYPE", "scopes": ["FONT_SIZE"], "valuesByMode": {"tmax": {"type": "VARIABLE_ALIAS", "id": "fs500"}, "tmin": {"type": "VARIABLE_ALIAS", "id": "fs300"}}},
+    {"id": "semsm", "name": "ds-font-size/text/sm", "resolvedType": "FLOAT", "variableCollectionId": "CTYPE", "scopes": ["FONT_SIZE"], "valuesByMode": {"tmax": {"type": "VARIABLE_ALIAS", "id": "fs175"}, "tmin": {"type": "VARIABLE_ALIAS", "id": "fs175"}}}
+  ],
+  "textStyles": [
+    {"name": "Headings/Heading 2XL", "fontName": {"family": "Space Grotesk", "style": "Heavy"}, "fontSize": 64, "lineHeight": {"unit": "PERCENT", "value": 120.00000476837158}, "letterSpacing": {"unit": "PERCENT", "value": -1}, "textCase": "ORIGINAL", "textDecoration": "NONE", "boundVariables": {"fontSize": {"id": "sem2xl"}, "fontFamily": {"id": "famheading"}, "fontWeight": {"id": "wheavy"}}},
+    {"name": "Headings/Heading LG", "fontName": {"family": "Space Grotesk", "style": "Heavy"}, "fontSize": 40, "lineHeight": {"unit": "PERCENT", "value": 110.00000238418579}, "letterSpacing": {"unit": "PERCENT", "value": 0}, "textCase": "ORIGINAL", "textDecoration": "NONE", "boundVariables": {"fontSize": {"id": "semlg"}, "fontFamily": {"id": "famheading"}, "fontWeight": {"id": "wheavy"}}},
+    {"name": "Body/Body SM", "fontName": {"family": "Public Sans", "style": "Book"}, "fontSize": 14, "lineHeight": {"unit": "PERCENT", "value": 160.0000023841858}, "letterSpacing": {"unit": "PERCENT", "value": 0}, "textCase": "ORIGINAL", "textDecoration": "NONE", "boundVariables": {"fontSize": {"id": "semsm"}, "fontFamily": {"id": "famtext"}, "fontWeight": {"id": "wreg"}}},
+    {"name": "Info/Callout MD", "fontName": {"family": "Source Serif 4", "style": "Book Italic"}, "fontSize": 28, "lineHeight": {"unit": "PERCENT", "value": 150}, "letterSpacing": {"unit": "PERCENT", "value": 0}, "textCase": "UPPER", "textDecoration": "NONE", "boundVariables": {}},
+    {"name": "Code/Inline", "fontName": {"family": "JetBrains Mono", "style": "Medium"}, "fontSize": 14, "lineHeight": {"unit": "PIXELS", "value": 18}, "letterSpacing": {"unit": "PIXELS", "value": 1}, "textCase": "ORIGINAL", "textDecoration": "UNDERLINE", "boundVariables": {"fontFamily": {"id": "fammono"}}}
+  ]
+}

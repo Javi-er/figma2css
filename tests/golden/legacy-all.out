@@ -1,0 +1,86 @@
+:root {
+  /* Base Variables */
+  --ds-brand-base-white: #fff;
+  --ds-brand-base-transparent: #0000;
+  --ds-brand-base-overlay-10: rgb(255 255 255 / 10%);
+  --ds-brand-accent: #e84e1b;
+  --ds-size-200-16px: 1rem; /* 16px */
+  --ds-size-300-24px: 1.5rem; /* 24px */
+  --ds-size-neg-025-2px: -0.125rem; /* -2px */
+  --radius-md: 8px;
+  --ds-font-weight-regular: 450;
+  --ds-font-weight-heavy: 750;
+  --ds-font-family-heading: "Space Grotesk";
+  --ds-font-family-text: "Public Sans";
+  --ds-font-family-mono: "JetBrains Mono";
+  --ds-font-family-serif: "Source Serif 4";
+
+  /* 02. Typography: Max (1440px) */
+  --ds-font-size-800: 4rem; /* 64px */
+  --ds-font-size-500: 2.5rem; /* 40px */
+  --ds-font-size-400: 2rem; /* 32px */
+  --ds-font-size-300: 1.5rem; /* 24px */
+  --ds-font-size-175: 0.875rem; /* 14px */
+  --ds-font-size-heading-2xl: var(--ds-font-size-800);
+  --ds-font-size-heading-lg: var(--ds-font-size-500);
+  --ds-font-size-text-sm: var(--ds-font-size-175);
+
+  /* 02. Typography: Min (375px) */
+  --ds-font-size-800-min: 4rem; /* 64px */
+  --ds-font-size-500-min: 2.5rem; /* 40px */
+  --ds-font-size-400-min: 2rem; /* 32px */
+  --ds-font-size-300-min: 1.5rem; /* 24px */
+  --ds-font-size-175-min: 0.875rem; /* 14px */
+  --ds-font-size-heading-2xl-min: var(--ds-font-size-400);
+  --ds-font-size-heading-lg-min: var(--ds-font-size-300);
+  --ds-font-size-text-sm-min: var(--ds-font-size-175);
+
+  /* 03. Spacing: Desktop (Max) */
+  --ds-spacing-none: 0rem; /* 0px */
+  --ds-spacing-section-default: var(--ds-size-300-24px);
+
+  /* 03. Spacing: Mobile (Min) */
+  --ds-spacing-none-mobile: 0rem; /* 0px */
+  --ds-spacing-section-default-mobile: var(--ds-size-200-16px);
+}
+
+/* Text styles */
+.headings-heading-2xl {
+  font-family: var(--ds-font-family-heading), sans-serif;
+  font-weight: var(--ds-font-weight-heavy);
+  font-size: var(--ds-font-size-heading-2xl);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.headings-heading-lg {
+  font-family: var(--ds-font-family-heading), sans-serif;
+  font-weight: var(--ds-font-weight-heavy);
+  font-size: var(--ds-font-size-heading-lg);
+  line-height: 1.1;
+}
+
+.body-body-sm {
+  font-family: var(--ds-font-family-text), sans-serif;
+  font-weight: var(--ds-font-weight-regular);
+  font-size: var(--ds-font-size-text-sm);
+  line-height: 1.6;
+}
+
+.info-callout-md {
+  font-family: "Source Serif 4", serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.75rem;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.code-inline {
+  font-family: var(--ds-font-family-mono), monospace;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 18px;
+  letter-spacing: 1px;
+  text-decoration: underline;
+}

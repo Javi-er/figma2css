@@ -1,0 +1,5 @@
+:root {
+  /* 01. Color */
+  --text-default: #000;
+  --text-leaky: var(--u-color-red-450);
+}

@@ -1,0 +1,16 @@
+{
+  "collections": [
+    {"id": "CMAIN", "name": "01. Color", "defaultModeId": "m1",
+     "modes": [{"modeId": "m1", "name": "Default"}],
+     "variableIds": ["kept", "leaky"]},
+    {"id": "CUTIL", "name": "Utility (do not export)", "defaultModeId": "u1",
+     "modes": [{"modeId": "u1", "name": "Mode 1"}],
+     "variableIds": ["internal"]}
+  ],
+  "variables": [
+    {"id": "kept", "name": "text/default", "resolvedType": "COLOR", "variableCollectionId": "CMAIN", "scopes": ["TEXT_FILL"], "valuesByMode": {"m1": {"r": 0, "g": 0, "b": 0, "a": 1}}},
+    {"id": "leaky", "name": "text/leaky", "resolvedType": "COLOR", "variableCollectionId": "CMAIN", "scopes": ["TEXT_FILL"], "valuesByMode": {"m1": {"type": "VARIABLE_ALIAS", "id": "internal"}}},
+    {"id": "internal", "name": "u-color/red/450", "resolvedType": "COLOR", "variableCollectionId": "CUTIL", "scopes": ["ALL_SCOPES"], "valuesByMode": {"u1": {"r": 0.9215686321258545, "g": 0, "b": 0.15294118225574493, "a": 1}}}
+  ],
+  "textStyles": []
+}
