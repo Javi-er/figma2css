@@ -4,7 +4,7 @@ All notable changes to `figma2css`. The format is based on [Keep a Changelog](ht
 
 ## [1.0.0] - 2026-10-29
 
-First public release. The skill and transformer were developed privately through fourteen 0.x releases inside a larger Figma-to-Drupal tool bundle and are published here as a standalone project, paired with the [Raw Token Exporter Figma plugin](https://www.figma.com/community/plugin/1697764012142993786/raw-token-exporter) on Figma Community.
+First public release. Paired with the [Raw Token Exporter Figma plugin](https://www.figma.com/community/plugin/1697764012142993786/raw-token-exporter) on Figma Community.
 
 - Figma Variables to CSS custom properties inside a managed region of your stylesheet (everything outside the markers is preserved); aliases preserved as `var()` references; units type-aware per Figma variable scope; multi-mode collections expanded with name suffixes; collections marked "do not export" skipped with dangling-alias warnings.
 - TextStyles to utility classes, SCSS mixins, or both, with optional responsive typography (stepped breakpoints or fluid clamp).
